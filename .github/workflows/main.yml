@@ -21,7 +21,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1'  # Update Ruby version to 3.1 (or later)
+        ruby-version: '3.1'  # Use Ruby 3.1
 
     # Step 3: Install dependencies
     - name: Install dependencies
@@ -34,12 +34,18 @@ jobs:
       run: |
         bundle exec jekyll build  # Builds the Jekyll site (default output in '_site' directory)
 
-    # Step 5: Deploy to GitHub Pages
+    # Step 5: List files after build to confirm output
+    - name: List files after build
+      run: |
+        ls -l _site  # List the files in the _site directory
+
+    # Step 6: Deploy to GitHub Pages
     - name: Deploy to GitHub Pages
       run: |
         git config --global user.name 'github-actions'  # Set GitHub Actions user for commits
         git config --global user.email 'github-actions@github.com'  # Set GitHub Actions email
-        git add -A  # Stage all changes
+        git add _site  # Add the generated files from _site directory
         git commit -m 'Deploy site'  # Commit the changes
-        git push origin main  # Push the changes to the 'main' branch (GitHub Pages is typically built from this branch)
+        git push origin main  # Push the changes to the 'main' branch (GitHub Pages is built from this branch)
+
 
