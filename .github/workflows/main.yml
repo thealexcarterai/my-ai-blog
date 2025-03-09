@@ -42,3 +42,4 @@ jobs:
         git add -A  # Stage all changes
         git commit -m 'Deploy site'  # Commit the changes
         git push origin main  # Push the changes to the 'main' branch (GitHub Pages is typically built from this branch)
+
