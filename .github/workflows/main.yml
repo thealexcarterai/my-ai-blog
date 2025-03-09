@@ -1,53 +1,45 @@
-
 name: Build and Deploy Jekyll Site
 
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the 'main' branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger the workflow on pull requests to the 'main' branch
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Run the workflow on the latest Ubuntu environment
+    runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the code
-    - name: Checkout repository
-      uses: actions/checkout@v2  # This checks out your repository code
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    # Step 2: Set up Ruby
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.1'  # Use Ruby 3.1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
 
-    # Step 3: Install dependencies
-    - name: Install dependencies
-      run: |
-        gem install bundler  # Install bundler (dependency manager for Ruby)
-        bundle install  # Install dependencies from Gemfile (including jekyll)
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
 
-    # Step 4: Build the Jekyll site
-    - name: Build the site
-      run: |
-        bundle exec jekyll build  # Builds the Jekyll site (default output in '_site' directory)
+      - name: Build the site
+        run: |
+          bundle exec jekyll build
 
-    # Step 5: List files after build to confirm output
-    - name: List files after build
-      run: |
-        ls -l _site  # List the files in the _site directory
+      - name: List files after build
+        run: |
+          ls -l _site
 
-    # Step 6: Deploy to GitHub Pages
-    - name: Deploy to GitHub Pages
-      env:
-        GH_TOKEN: ${{ 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 }}  # Use the secret token for authentication
-      run: |
-        git config --global user.name 'github-actions'  # Set GitHub Actions user for commits
-        git config --global user.email 'github-actions@github.com'  # Set GitHub Actions email
-        git remote set-url origin https://github-actions:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git  # Set remote URL to use the token
-        git add -f _site  # Force add the generated files from _site directory
-        git commit -m 'Deploy site'  # Commit the changes
-        git push origin main  # Push the changes to the 'main' branch (GitHub Pages is built from this branch)
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Use the secret GitHub Token here
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add -f _site
+          git commit -m 'Deploy site'
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
