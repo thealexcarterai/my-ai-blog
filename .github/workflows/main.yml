@@ -42,7 +42,7 @@ jobs:
     # Step 6: Deploy to GitHub Pages
     - name: Deploy to GitHub Pages
       env:
-        GH_TOKEN: ${{ secrets.aakash_shinde }}  # Use the secret for authentication
+        GH_TOKEN: ${{ secrets.aakash_shinde_Token }}  # Use the secret for authentication
       run: |
         git config --global user.name 'github-actions'  # Set GitHub Actions user for commits
         git config --global user.email 'github-actions@github.com'  # Set GitHub Actions email
