@@ -42,11 +42,11 @@ jobs:
     # Step 6: Deploy to GitHub Pages
     - name: Deploy to GitHub Pages
       env:
-        GH_TOKEN: ${{ secrets.aakash_shinde_Token }}  # Use the secret for authentication
+        GH_TOKEN: ${{ secrets.Aakash_Shinde_Token }}  # Use the secret for authentication
       run: |
         git config --global user.name 'github-actions'  # Set GitHub Actions user for commits
         git config --global user.email 'github-actions@github.com'  # Set GitHub Actions email
-        git remote set-url origin https://x-access-token:${{ secrets.aakash_shinde }}@github.com/${{ github.repository }}.git  # Update the remote URL with the token
+        git remote set-url origin https://x-access-token:${{ secrets.Aakash_Shinde_Token }}@github.com/${{ github.repository }}.git  # Update the remote URL with the token
         git add -f _site  # Force add the generated files from _site directory
         git commit -m 'Deploy site'  # Commit the changes
         git push origin main  # Push the changes to the 'main' branch (GitHub Pages is built from this branch)
