@@ -1,0 +1,44 @@
+name: Build and Deploy Jekyll Site
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the 'main' branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow on pull requests to the 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Run the workflow on the latest Ubuntu environment
+
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout repository
+      uses: actions/checkout@v2  # This checks out your repository code
+
+    # Step 2: Set up Ruby
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7'  # You can change this if you need a different Ruby version
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: |
+        gem install bundler  # Install bundler (dependency manager for Ruby)
+        bundle install  # Install dependencies from Gemfile (including jekyll)
+
+    # Step 4: Build the Jekyll site
+    - name: Build the site
+      run: |
+        bundle exec jekyll build  # Builds the Jekyll site (default output in '_site' directory)
+
+    # Step 5: Deploy to GitHub Pages
+    - name: Deploy to GitHub Pages
+      run: |
+        git config --global user.name 'github-actions'  # Set GitHub Actions user for commits
+        git config --global user.email 'github-actions@github.com'  # Set GitHub Actions email
+        git add -A  # Stage all changes
+        git commit -m 'Deploy site'  # Commit the changes
+        git push origin main  # Push the changes to the 'main' branch (GitHub Pages is typically built from this branch)
