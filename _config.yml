@@ -1,0 +1,29 @@
+title: "AI Book Blog"
+author: "Alex Carter"
+description: "AI-powered book insights, reviews, and recommendations."
+baseurl: ""
+url: "https://alexwritesai.github.io"
+theme: minima
+
+# SEO & Social Media
+google_analytics: "UA-XXXXXX-X"
+twitter_username: "AlexWritesAI"
+github_username: "AlexWritesAI"
+email: "alex.carter.ai@gmail.com"
+
+# Minima Customization
+minima:
+  skin: dark
+  social_links:
+    twitter: AlexWritesAI
+    github: AlexWritesAI
+    rss: true
+  date_format: "%b %-d, %Y"
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+sass:
+  style: compressed

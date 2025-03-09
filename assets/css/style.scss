@@ -1,0 +1,25 @@
+---
+---
+
+@use "minima";
+ // Keep Minima's base styles
+
+// Custom Colors
+$primary-color: #ff9800; // Change this for the main color
+$background-color: #121212; // Dark background
+$text-color: #e0e0e0; // Light text
+$link-color: #ff9800; // Custom link color
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+a {
+  color: $link-color;
+}
+
+.site-title, .site-nav {
+  color: $primary-color;
+}
+
