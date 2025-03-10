@@ -1,15 +1,15 @@
 ---
 ---
 
-@use "minima";
- // Keep Minima's base styles
+@use "minima" as *; // Load Minima styles
 
-// Custom Colors
-$primary-color: #ff9800; // Change this for the main color
-$background-color: #121212; // Dark background
-$text-color: #e0e0e0; // Light text
-$link-color: #ff9800; // Custom link color
+// Custom Theme Variables
+$primary-color: #ff9800; 
+$background-color: #121212;
+$text-color: #e0e0e0;
+$link-color: #ff9800;
 
+// Apply Custom Styles
 body {
   background-color: $background-color;
   color: $text-color;
