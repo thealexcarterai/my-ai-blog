@@ -6,7 +6,7 @@ def generate_blog_post():
     
     # Run AI model to generate content
     ai_response = subprocess.run(
-        ["ollama", "run", "mistral", "Write an SEO-friendly blog post about AI trends."],
+        ["ollama", "run", "mistral", "Write an SEO-friendly blog post about latest trends on social media to follow."],
         capture_output=True, text=True
     )
     
