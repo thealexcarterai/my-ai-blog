@@ -1,0 +1,23 @@
+<header class="site-header">
+  <div class="header-container">
+    <!-- Logo -->
+    <a href="{{ site.baseurl }}/" class="logo">
+      <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="AI Book Blog Logo">
+    </a>
+
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="{{ site.baseurl }}/">Home</a></li>
+        <li><a href="{{ site.baseurl }}/about">About</a></li>
+        <li><a href="{{ site.baseurl }}/archive">Archive</a></li>
+      </ul>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search last 30 days...">
+      <button id="search-button">🔍</button>
+    </div>
+  </div>
+</header>
