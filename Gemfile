@@ -1,33 +1,39 @@
 source "https://rubygems.org"
-# Hello! This is where you manage which Jekyll version is used to run.
-# When you want to use a different version, change it below, save the
-# file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
-#
-#     bundle exec jekyll serve
-#
-# This will help ensure the proper Jekyll version is running.
-# Happy Jekylling!
+
+# Specify the Jekyll version
 gem "jekyll", "~> 4.4.1"
-# This is the default theme for new Jekyll sites. You may change this to anything you like.
+
+# Specify the Minima theme version
 gem "minima", "~> 2.5"
-# If you want to use GitHub Pages, remove the "gem "jekyll"" above and
-# uncomment the line below. To upgrade, run `bundle update github-pages`.
-# gem "github-pages", group: :jekyll_plugins
-# If you have any plugins, put them here!
+
+# Required plugins
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-seo-tag", "~> 2.8"  # Add this for SEO tags
 end
 
-# Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
-# and associated library.
+# Additional dependencies
+gem "webrick", "~> 1.7"  # Required for Jekyll 4.0 and above
+gem "i18n", "~> 1.14"    # Internationalization support
+gem "kramdown", "~> 2.5" # Markdown parser
+gem "rouge", "~> 4.5"    # Syntax highlighting
+gem "jekyll-sass-converter", "~> 3.1"  # Sass support
+gem "jekyll-coffeescript", "~> 2.0"    # CoffeeScript support
+gem "jekyll-commonmark-ghpages", "~> 0.2"  # CommonMark support
+gem "jekyll-gist", "~> 1.5"  # Gist embedding
+gem "jekyll-paginate", "~> 1.1"  # Pagination support
+gem "jekyll-relative-links", "~> 0.7"  # Relative links
+gem "jekyll-optional-front-matter", "~> 0.3"  # Optional front matter
+gem "jekyll-readme-index", "~> 0.3"  # README as index
+gem "jekyll-default-layout", "~> 0.1"  # Default layout
+gem "jekyll-titles-from-headings", "~> 0.5"  # Titles from headings
+
+# Windows and JRuby-specific gems
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", ">= 1", "< 3"
   gem "tzinfo-data"
+  gem "wdm", "~> 0.1"  # Performance booster for Windows
 end
 
-# Performance-booster for watching directories on Windows
-gem "wdm", "~> 0.1", :platforms => [:mingw, :x64_mingw, :mswin]
-
-# Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
-# do not have a Java counterpart.
+# Lock `http_parser.rb` gem for JRuby
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
