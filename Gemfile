@@ -19,7 +19,6 @@ gem "kramdown", "~> 2.5" # Markdown parser
 gem "kramdown-parser-gfm", "~> 1.1" # GitHub-Flavored Markdown (fixes jekyll-commonmark-ghpages issue)
 gem "rouge", "~> 4.5"    # Syntax highlighting
 gem "jekyll-sass-converter", "~> 3.1"  # Sass support
-gem "jekyll-coffeescript", "~> 2.0"    # CoffeeScript support
 gem "jekyll-gist", "~> 1.5"  # Gist embedding
 gem "jekyll-paginate", "~> 1.1"  # Pagination support
 gem "jekyll-relative-links", "~> 0.7"  # Relative links
